@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["../src/preload.ts"],
-  "sourcesContent": ["import { contextBridge, ipcRenderer } from \"electron\";\r\n\r\ncontextBridge.exposeInMainWorld(\"myAPI\", {\r\n  updateTitle: async (arg: number): Promise<void> =>\r\n    ipcRenderer.invoke(\"update-title\", arg),\r\n  openExternal: async (arg: string): Promise<void> =>\r\n    ipcRenderer.invoke(\"open-external\", arg),\r\n});\r\n"],
-  "mappings": ";;;AAAA,sBAA2C;AAE3C,8BAAc,kBAAkB,SAAS;AAAA,EACvC,aAAa,OAAO,QAClB,4BAAY,OAAO,gBAAgB,GAAG;AAAA,EACxC,cAAc,OAAO,QACnB,4BAAY,OAAO,iBAAiB,GAAG;AAC3C,CAAC;",
-  "names": []
-}
