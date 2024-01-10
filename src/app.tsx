@@ -1,6 +1,22 @@
+import React from 'react';
 import { createRoot } from 'react-dom/client';
 
-const root = createRoot(document.getElementById('root'));
-root.render(
-  <h2>Hello from React!</h2>
-);
+import "./app.css";
+
+const App = () => {
+  return (
+    <div>
+      <p>ciao bel</p>
+    </div>
+  );
+};
+
+const rootElement = document.getElementById('root');
+if (rootElement) {
+  const root = createRoot(rootElement);
+  root.render(<App />);
+} else {
+  console.error('Failed to find the root element');
+}
+
+export default App;
