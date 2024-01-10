@@ -62,3 +62,42 @@ app.on('activate', () => {
 
 const db = new Database(path.join(__dirname, 'movies.db'));
 
+// Initialize the movies table
+function initializeDatabase() {
+  const createTable = `
+    CREATE TABLE IF NOT EXISTS movies (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      title TEXT NOT NULL,
+      director TEXT,
+      release_year INTEGER
+    );
+  `;
+  db.prepare(createTable).run();
+}
+
+// Call initializeDatabase to set up the table
+initializeDatabase();
+
+// CRUD Operations
+// Example: Insert a movie
+function insertMovie(title: string, director: string, releaseYear: number) {
+  const insert = db.prepare('INSERT INTO movies (title, director, release_year) VALUES (?, ?, ?)');
+  insert.run(title, director, releaseYear);
+}
+
+// Example: Query movies
+function getMovies() {
+  return db.prepare('SELECT * FROM movies').all();
+}
+
+// Example: Update a movie
+function updateMovie(id: number, title: string, director: string, releaseYear: number) {
+  const update = db.prepare('UPDATE movies SET title = ?, director = ?, release_year = ? WHERE id = ?');
+  update.run(title, director, releaseYear, id);
+}
+
+// Example: Delete a movie
+function deleteMovie(id: number) {
+  const del = db.prepare('DELETE FROM movies WHERE id = ?');
+  del.run(id);
+}

@@ -2,11 +2,12 @@ import React from 'react';
 import { createRoot } from 'react-dom/client';
 
 import "./app.css";
+import Navbar from './components/Navbar';
 
 const App = () => {
   return (
     <div>
-      <p>ciao bel</p>
+      <Navbar />
     </div>
   );
 };
