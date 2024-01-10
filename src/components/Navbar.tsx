@@ -8,18 +8,24 @@ const Navbar = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentTime(new Date());
-    }, 30000); //update interval
+    }, 30000); // Update every minute
 
     return () => clearInterval(interval);
   }, []);
 
   const formatTime = (date: Date): string => {
-    return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    let hours = date.getHours();
+    let minutes = date.getMinutes();
+    let formattedHours = hours.toString();
+    let formattedMinutes = minutes < 10 ? `0${minutes}` : minutes.toString();
+
+    return `${formattedHours}:${formattedMinutes}`;
   };
 
   return (
     <nav>
       <div>Navbar Content</div>
+      {/*Searchbar*/}
       <div className="time">{formatTime(currentTime)}</div>
     </nav>
   );

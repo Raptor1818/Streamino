@@ -5,3 +5,11 @@
 *{
   @apply text-white;
 }
+
+#root{
+  @apply h-screen overflow-hidden;
+}
+
+.body-container{
+  @apply h-full flex flex-row;
+}

@@ -68,8 +68,10 @@ function initializeDatabase() {
     CREATE TABLE IF NOT EXISTS movies (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       title TEXT NOT NULL,
-      director TEXT,
-      release_year INTEGER
+      year INTEGER,
+      duration INTEGER,
+      genre TEXT,
+      overview TEXT
     );
   `;
   db.prepare(createTable).run();
@@ -79,24 +81,24 @@ function initializeDatabase() {
 initializeDatabase();
 
 // CRUD Operations
-// Example: Insert a movie
-function insertMovie(title: string, director: string, releaseYear: number) {
-  const insert = db.prepare('INSERT INTO movies (title, director, release_year) VALUES (?, ?, ?)');
-  insert.run(title, director, releaseYear);
+// Insert a movie
+function insertMovie(title: string, year: number, duration: number, genre: string, overview: string) {
+  const insert = db.prepare('INSERT INTO movies (title, year, duration, genre, overview) VALUES (?, ?, ?, ?, ?)');
+  insert.run(title, year, duration, genre, overview);
 }
 
-// Example: Query movies
+// Query movies
 function getMovies() {
   return db.prepare('SELECT * FROM movies').all();
 }
 
-// Example: Update a movie
-function updateMovie(id: number, title: string, director: string, releaseYear: number) {
+// Update a movie
+function updateMovie(id: number, title: string, year: number, duration: number, genre: string, overview: string) {
   const update = db.prepare('UPDATE movies SET title = ?, director = ?, release_year = ? WHERE id = ?');
-  update.run(title, director, releaseYear, id);
+  update.run(title, year, duration, genre, overview);
 }
 
-// Example: Delete a movie
+// Delete a movie
 function deleteMovie(id: number) {
   const del = db.prepare('DELETE FROM movies WHERE id = ?');
   del.run(id);
