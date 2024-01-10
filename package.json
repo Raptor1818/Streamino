@@ -10,7 +10,7 @@
     "make": "electron-forge make",
     "publish": "electron-forge publish",
     "lint": "eslint --ext .ts,.tsx .",
-    "rebuild": "./node_modules/.bin/electron-rebuild.cmd"
+    "rebuild": "./node_modules/.bin/electron-rebuild.cmd -f -w better-sqlite3"
   },
   "keywords": [],
   "author": {
