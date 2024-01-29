@@ -1,5 +1,7 @@
 # Streamino
 
+#Indefinetly suspended
+
 Streamino is a locally-run webapp application that organizes your media all in one library. It organizes your movies (and soon, music) from various folders into one unified, easily accessible library. Experience seamless streaming of your personal collection, all in one place.
 
 Built with Electron, React Typescript, and TailwindCSS. Still in early production, almost everything is subject to change.
